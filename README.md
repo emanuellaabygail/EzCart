@@ -1,5 +1,6 @@
 # EzCart
 ## Tautan deploy: 
+emanuella-abygail-ezcart.pbp.cs.ui.ac.id
 ## Pertanyaan:
 ### Cara Pengimplementasian checklist
 #### A. Membuat sebuah proyek Django baru
