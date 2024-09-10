@@ -2,7 +2,7 @@
 ## Tautan deploy: 
 emanuella-abygail-ezcart.pbp.cs.ui.ac.id
 ## Pertanyaan:
-### Cara Pengimplementasian checklist
+### I. Cara Pengimplementasian checklist
 #### A. Membuat sebuah proyek Django baru
 1. Saya membuat sebuah direktori kosong pada komputer saya dan menginisiasikan repositori dengan perintah "git init" untuk membuat repositori git kosong di direktori yang dibuat lalu konfigurasi repositori tersebut
 2. Saya juga membuat sebuah repositori pada github yang akan menjadi tempat penyimpanan repo lokal di github, kemudian hubungkan repo lokal dan repo di git dengan perintah "git remote add origin <URL_REPO>". Add, commit, dan push file-file yang dibuat di repo lokal ke repo github sehingga tersimpan juga di repo github
@@ -37,3 +37,18 @@ dengan kode ini, urls.py akan mengatur rute URL yang terkait dengan aplikasi mai
 2. Sebelum menjalankannya, saya menambahkan URL deployment saya, yaitu emanuella-abygail-ezcart.pbp.cs.ui.ac.id, pada list ALLOWED_HOSTS di settings.py
 3. git add, commit, dan push perubahan ke repo GitHub
 4. Jalankan perintah pada Project Command dan web akan dijalankan
+
+### II. Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html.
+
+### III. Jelaskan fungsi git dalam pengembangan perangkat lunak!
+Git adalah alat yang digunakan untuk pengelolaan versi dalam pengembangan perangkat lunak. Git dapat melacak semua perubahan yang dilakukan pada kode sehingga memudahkan kita untuk melihat riwayat perubahan dan mengembalikan ke versi sebelumnya jika memang diperlukan. Misalnya kita sedang mencoba suatu logic tetapi logic tersebut tidak benar dan merusak fungsionalitas kode. Dengan git, kita dapat mengembalikan kode ke versi sebelum logic yang merusak ditambahkan. 
+
+Git juga berguna untuk pengembangan yang memerlukan kolaborasi dengan orang lain. Git memiliki fitur branching sehingga seseorang dapat mekerjakan suatu bagian code di branch terpisah tanpa mempengaruhi kode utama. Untuk menyatukan perubahan-perubahan pada branch, dilakukan merge. Saat merge, ada kemungkinan terjadinya konflik antarcabang. Git dapat membantu mendeteksi konflik tersebut sehingga dapat segera diselesaikan.
+
+Git juga menyimpan seluruh riwayat kode secara lokal di repo lokal dan online di repo utama. Oleh karena itu, git dapat berfungsi sebagai back-up sehingga jika terjadi masalah pada repo lokal, pemulihan kode dapat dilakukan dengan mudah.
+
+### IV. Menurut Anda, dari semua framework yang ada, mengapa framework Django dijadikan permulaan pembelajaran pengembangan perangkat lunak?
+Django dipilih menjadi framework awal untuk pembelajaran pengembangan perangkat lunak karena Django punya struktur proyek yang jelas dan terorganisir sehingga lebih mudah untuk dipahami oleh pemula. Django adalah framework yang sudah memiliki berbagai fitur penting yang tersedia secara default. Dengan begitu, kita dapat fokus belajar konsep dasar tanpa perlu memikirkan penginstallan segala tambahan. Django memakai bahasa Python yang merupakan bahasa sederhana dan high-level serta sebagai mahasiswa Fasilkom UI, kita sudah mempelajarinya di mata kuliah DDP 1 sehingga kita sudah familiar dengan bahasa tersebut. Dokumentasi Django pun lengkap dan jelas. Django juga mengikuti pola arsitektur Model-View-Controller atau MVC yang sering digunakan di dunia industri sehingga cocok untuk dipelajari.
+
+### V. Mengapa model pada Django disebut sebagai ORM?
+Model di Django disebut sebagai ORM atau Object Relational Mapping karena fungsinya untuk menghubungkan antara kode Python dan database relasional. ORM memungkinkan kita untuk bekerja dengan data dalam bentuk object di Python tanpa menulis query SQL secara langsung. Dengan ORM, kita dapat berinteraksi dengan lebih mudah dan aman karena tidak perlu khawatir tentang sintaks SQL atau perbedaan antardatabase. ORM juga menjaga konsistensi dan integritas data secara otomatis sehingga dapat mengurangi risiko kesalahan.
