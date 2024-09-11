@@ -39,6 +39,8 @@ dengan kode ini, urls.py akan mengatur rute URL yang terkait dengan aplikasi mai
 4. Jalankan perintah pada Project Command dan web akan dijalankan
 
 ### II. Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html.
+![image](https://github.com/user-attachments/assets/5bab8580-aa5f-4a6d-9a3b-81173b279372)
+Pertama-tama, Client mengirimkan request ke browser. Django akan memeriksa urls.py untuk menemukan rute yang cocok dengan permintaan URL dan mengarahkan ke fungsi views.py. Fungsi views akan mengolah request dan kode di dalam views.py akan dijalankan dan mengambil data yang diperlukan. Jika ada, view akan mengumpulkan data dari models.py. Setelah data sudah ada, view akan memilih template HTML untuk merender halaman yang akan ditampilkan, yaitu pada main.html. Template ini menggunakan data dari view untuk menghasilkan HTML. Halaman web yang sudah dirender akan dikirim kembali ke browser pengguna sebagai respons.
 
 ### III. Jelaskan fungsi git dalam pengembangan perangkat lunak!
 Git adalah alat yang digunakan untuk pengelolaan versi dalam pengembangan perangkat lunak. Git dapat melacak semua perubahan yang dilakukan pada kode sehingga memudahkan kita untuk melihat riwayat perubahan dan mengembalikan ke versi sebelumnya jika memang diperlukan. Misalnya kita sedang mencoba suatu logic tetapi logic tersebut tidak benar dan merusak fungsionalitas kode. Dengan git, kita dapat mengembalikan kode ke versi sebelum logic yang merusak ditambahkan. 
