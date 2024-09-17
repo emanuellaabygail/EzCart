@@ -56,6 +56,7 @@ Django dipilih menjadi framework awal untuk pembelajaran pengembangan perangkat 
 
 ### V. Mengapa model pada Django disebut sebagai ORM?
 Model di Django disebut sebagai ORM atau Object Relational Mapping karena fungsinya untuk menghubungkan antara kode Python dan database relasional. ORM memungkinkan kita untuk bekerja dengan data dalam bentuk object di Python tanpa menulis query SQL secara langsung. Dengan ORM, kita dapat berinteraksi dengan lebih mudah dan aman karena tidak perlu khawatir tentang sintaks SQL atau perbedaan antardatabase. ORM juga menjaga konsistensi dan integritas data secara otomatis sehingga dapat mengurangi risiko kesalahan.
+
 <br>
 <br>
 ---
