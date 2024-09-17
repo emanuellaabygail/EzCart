@@ -59,7 +59,6 @@ Model di Django disebut sebagai ORM atau Object Relational Mapping karena fungsi
 
 <br>
 <br>
----
 
 # Tugas 3
 ## Pertanyaan:
@@ -84,3 +83,7 @@ Pada file views.py, import HttpResponse dari django.http dan serializers dari dj
 Pada file urls.py pada direktori main, saya menambahkan import keempat fungsi tersebut dan menambahkan path untuk masing-masing fungsi.
 
 ## Mengakses keempat URL di poin 2 menggunakan Postman, membuat screenshot dari hasil akses URL pada Postman, dan menambahkannya ke dalam README.md.
+![Screenshot (2797)](https://github.com/user-attachments/assets/03ab90f0-c415-4f70-bb1e-b3cae1aa4d72)
+![Screenshot (2798)](https://github.com/user-attachments/assets/7ef8e64b-19f3-4d90-b586-8dd72a1a42c0)
+![Screenshot (2800)](https://github.com/user-attachments/assets/3a7af467-358e-4634-8ba9-270063fb87a5)
+![Screenshot (2799)](https://github.com/user-attachments/assets/9211534e-5bdf-4818-a194-b0992d69dc9e)
