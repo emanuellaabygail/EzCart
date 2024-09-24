@@ -41,6 +41,8 @@ dengan kode ini, urls.py akan mengatur rute URL yang terkait dengan aplikasi mai
 4. Jalankan perintah pada Project Command dan web akan dijalankan
 
 ### II. Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html.
+![image](https://github.com/user-attachments/assets/5bab8580-aa5f-4a6d-9a3b-81173b279372)
+Pertama-tama, Client mengirimkan request ke browser. Django akan memeriksa urls.py untuk menemukan rute yang cocok dengan permintaan URL dan mengarahkan ke fungsi views.py. Fungsi views akan mengolah request dan kode di dalam views.py akan dijalankan dan mengambil data yang diperlukan. Jika ada, view akan mengumpulkan data dari models.py. Setelah data sudah ada, view akan memilih template HTML untuk merender halaman yang akan ditampilkan, yaitu pada main.html. Template ini menggunakan data dari view untuk menghasilkan HTML. Halaman web yang sudah dirender akan dikirim kembali ke browser pengguna sebagai respons.
 
 ### III. Jelaskan fungsi git dalam pengembangan perangkat lunak!
 Git adalah alat yang digunakan untuk pengelolaan versi dalam pengembangan perangkat lunak. Git dapat melacak semua perubahan yang dilakukan pada kode sehingga memudahkan kita untuk melihat riwayat perubahan dan mengembalikan ke versi sebelumnya jika memang diperlukan. Misalnya kita sedang mencoba suatu logic tetapi logic tersebut tidak benar dan merusak fungsionalitas kode. Dengan git, kita dapat mengembalikan kode ke versi sebelum logic yang merusak ditambahkan. 
@@ -81,6 +83,10 @@ Pada file views.py, import HttpResponse dari django.http dan serializers dari dj
 Pada file urls.py pada direktori main, saya menambahkan import keempat fungsi tersebut dan menambahkan path untuk masing-masing fungsi.
 
 ## Mengakses keempat URL di poin 2 menggunakan Postman, membuat screenshot dari hasil akses URL pada Postman, dan menambahkannya ke dalam README.md.
+![image](https://github.com/user-attachments/assets/9ced82f7-300d-4601-bf91-341ef907e519)
+![Screenshot (2798)](https://github.com/user-attachments/assets/7ef8e64b-19f3-4d90-b586-8dd72a1a42c0)
+![Screenshot (2800)](https://github.com/user-attachments/assets/3a7af467-358e-4634-8ba9-270063fb87a5)
+![Screenshot (2799)](https://github.com/user-attachments/assets/9211534e-5bdf-4818-a194-b0992d69dc9e)
 
 <br>
 <br>
