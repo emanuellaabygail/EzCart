@@ -5,25 +5,25 @@ emanuella-abygail-ezcart.pbp.cs.ui.ac.id
 # Tugas 2
 ## Pertanyaan:
 ### I. Cara Pengimplementasian checklist
-#### A. Membuat sebuah proyek Django baru
+#### a. Membuat sebuah proyek Django baru
 1. Saya membuat sebuah direktori kosong pada komputer saya dan menginisiasikan repositori dengan perintah "git init" untuk membuat repositori git kosong di direktori yang dibuat lalu konfigurasi repositori tersebut
 2. Saya juga membuat sebuah repositori pada github yang akan menjadi tempat penyimpanan repo lokal di github, kemudian hubungkan repo lokal dan repo di git dengan perintah "git remote add origin <URL_REPO>". Add, commit, dan push file-file yang dibuat di repo lokal ke repo github sehingga tersimpan juga di repo github
 3. Setelah repo telah terbuat, saya mengaktifkan virtual environment dan menginstall semua dependencies yang diperlukan untuk menjalankan django. Dependencies diinstall pada virtual environment agar tidak bertabrakan dengan dependencies lain yang sudah ada di komputer
 4. Kemudian, saya menkonfigurasikan proyek dengan menambahkan "localhost", "127.0.0.1" ke ALLOWED_HOST pada file settings.py. Hal ini akan memberi izin akses dari host local. Untuk melihat proyek django yang sudah dibuat, jalankan perintah "python manage.py runserver" dan buka pada link http://localhost:8000
 
-#### B. Membuat aplikasi dengan nama main pada proyek Django yang sudah dibuat
+#### b. Membuat aplikasi dengan nama main pada proyek Django yang sudah dibuat
 Untuk membuat aplikasi baru dengan nama main, saya menjalankan perintah "python manage.py startapp main" yang akan menyebabkan direktori baru dengan nama main terbuat. Direktori ini berisi struktur awal aplikasi Django
 
-#### C. Melakukan routing pada proyek agar dapat menjalankan aplikasi main
+#### c. Melakukan routing pada proyek agar dapat menjalankan aplikasi main
 Agar aplikasi main bisa dijalankan, perlu dilakukan routing. Routing dilakukan dengan cara membuka file settings.py lalu pada list INSTALLED_APPS, saya menambahkan "main".
 
-#### D. Membuat model pada aplikasi main dengan nama Product dan memiliki atribut wajib name, price, description
+#### d. Membuat model pada aplikasi main dengan nama Product dan memiliki atribut wajib name, price, description
 Pada file models.py, saya membuat sebuah class baru yang bernama Product dan saya mengisi atributnya dengan name dengan tipe CharField, price dengan tipe IntegerField, dan description dengan tipe TextField. Setelah membuat model, saya membuat dan mengaplikasikan migrasi model agar Django dapat melacak perubahan pada model basis data saya.
 
-#### E. Membuat sebuah fungsi pada views.py untuk dikembalikan ke dalam sebuah template HTML 
+#### e. Membuat sebuah fungsi pada views.py untuk dikembalikan ke dalam sebuah template HTML 
 Pada file views.py di dalam folder aplikasi main, saya menambahkan fungsi bernama show_main yang berisi dictionary context yang di dalamnya terdapat pasangan key dan value. Key akan dipanggil di dalam template HTML dan aplikasi Django akan menampilkan valuenya. 
 
-#### F. Membuat sebuah routing pada urls.py aplikasi main untuk memetakan fungsi yang telah dibuat pada views.py
+#### f. Membuat sebuah routing pada urls.py aplikasi main untuk memetakan fungsi yang telah dibuat pada views.py
 1. Di direktori aplikasi main, saya membuat file urls.py dan menambahkan kode:
 from django.urls import path
 from main.views import show_main
@@ -34,7 +34,7 @@ urlpatterns = [
 dengan kode ini, urls.py akan mengatur rute URL yang terkait dengan aplikasi main. variable app_name diberikan untuk memberi nama unik pada pola URL dalam aplikasi.
 2. Di direktori proyek, saya membuka file urls.py. Pada file tersebut, saya menambahkan fungsi include dari django.urls dan menambahkan rute URL path('', include('main.urls')) untuk mengarahkan proyek ke tampilan main
 
-#### G. Melakukan deployment ke PWS terhadap aplikasi yang sudah dibuat sehingga nantinya dapat diakses melalui Internet.
+#### g. Melakukan deployment ke PWS terhadap aplikasi yang sudah dibuat sehingga nantinya dapat diakses melalui Internet.
 1. Saya log in pada website PWS dan membuat project baru dengan menekan "Create New Project". Di laman pembuatan proyek baru, saya memasukkan nama proyek saya, yaitu ezcart dan menekan tombol "Create New Project". Akan muncul info tentang project credentials dan project command. Saya meng-copy project credentialsnya karena diperlukan pada step-step berikutnya.
 2. Sebelum menjalankannya, saya menambahkan URL deployment saya, yaitu emanuella-abygail-ezcart.pbp.cs.ui.ac.id, pada list ALLOWED_HOSTS di settings.py
 3. git add, commit, dan push perubahan ke repo GitHub
@@ -57,7 +57,6 @@ Model di Django disebut sebagai ORM atau Object Relational Mapping karena fungsi
 
 <br>
 <br>
----
 
 # Tugas 3
 ## Pertanyaan:
@@ -74,11 +73,45 @@ Method 'is_valid()' pada form Django berfungsi untuk melakukan validasi data yan
 csrf_token diperlukan untuk melindungi aplikasi kita dari serangan cross-site request forgery yang merupakan jenis serangan di mana penyerang dapat membuat pengguna tanpa sadar mengirimkan permintaan yang tidak sah ke server. Tanpa csrf_token, aplikasi rentan terhadap serangan ini, yang bisa mengakibatkan perubahan data atau tindakan tak sah dari akun pengguna. Django menggunakan token ini untuk memastikan bahwa permintaan form berasal dari sumber yang sah, sehingga menjaga keamanan aplikasi dan melindungi pengguna.
 
 ### V. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step
-#### A. Membuat input form untuk menambahkan objek model pada app sebelumnya.
+#### a. Membuat input form untuk menambahkan objek model pada app sebelumnya.
 Pada direktori main, saya membuat file baru dengan nama forms.py. Di dalamnya, saya membuat struktur form yang akan menerima data product entry baru, yaitu class ProductEntryForm. Lalu, pada file views.py, saya membuat fungsi create_product_entry(request) yang akan menerima parameter request, melakukan validasi data, dan menghasilkan form yang akan menambahkan data Product Entry secara otomatis ketika form di-submit. Setelah itu, saya membuat file HTML baru yang berisi template untuk tampilan form.
-#### B. Menambahkan 4 fungsi views baru untuk melihat objek yang sudah ditambahkan dalam format XML, JSON, XML by ID, dan JSON by ID.
+#### b. Menambahkan 4 fungsi views baru untuk melihat objek yang sudah ditambahkan dalam format XML, JSON, XML by ID, dan JSON by ID.
 Pada file views.py, import HttpResponse dari django.http dan serializers dari django.core. Pada file tersebut juga, saya membuat 4 fungsi views, yaitu show_xml(request), show_json(request), show_xml_by_id(request, id), dan show_json_by_id(request, id) yang masing-masing akan mengembalikan HttpResponse. Masing-masing fungsi memiliki atribut data yang berisi ProductEntry.objects.all() untuk show_xml dan show_json, serta ProductEntry.objects.filter(pk=id) untuk show_xml_by_id dan show_json_by_id.
-#### C. Membuat routing URL untuk masing-masing views yang telah ditambahkan.
+#### c. Membuat routing URL untuk masing-masing views yang telah ditambahkan.
 Pada file urls.py pada direktori main, saya menambahkan import keempat fungsi tersebut dan menambahkan path untuk masing-masing fungsi.
 
 ## Mengakses keempat URL di poin 2 menggunakan Postman, membuat screenshot dari hasil akses URL pada Postman, dan menambahkannya ke dalam README.md.
+
+<br>
+<br>
+
+# Tugas 4
+## Pertanyaan:
+### I. Apa perbedaan antara HttpResponseRedirect() dan redirect()
+HttpResponseRedirect() dan redirect() pada Django memiliki fungsi yang sama, yaitu mengarahkan kembali pengguna ke URL lain yang ditentukan. Perbedaannya adalah pada HttpResponseRedirect(), argumen yang dapat diterima hanya berupa url, sedangkan pada redirect(), argumen dapat berupa model, view, ataupun url. Fungsi redirect() akan mengembalikan HttpResponseRedirect() dengan url yang sesuai dengan argumen yang dimasukkan ke fungsi redirect. Jadi, redirect akan menentukan terlebih dahulu url yang sesuai dengan argumen yang dimasukkan dan mengembalikan HttpResponseRedirect() ke url tersebut.
+
+### II. Jelaskan cara kerja penghubungan model Product dengan User!
+Pada proyek ini, model Product dihubungkan dengan User dengan menggunakan ForeignKey. Penggunaan ForeignKey dapat dilihat pada file models.py di mana class ProductEntry memiliki atribut user = models.ForeignKey(User, on_delete=models.CASCADE) yang menghubungkan satu product entry dengan satu user sehingga satu product pasti terasosiasi dengan satu user. Pada potongan kode product_entries = ProductEntry.objects.filter(user=request.user) di file views.py menyebabkan product yang ditunjukkan hanyalah product yang terasosiasi dengan user yang logged in pada session tersebut. Pada fungsi create_product_entry di file views.py, terdapat potongan kode product_entry.user = request.user sehingga saat product disimpan, atribut user pada model ProdyctEntry akan diisi dengan user yang sedang login (request.user). 
+
+### III. Apa perbedaan antara authentication dan authorization, apakah yang dilakukan saat pengguna login? Jelaskan bagaimana Django mengimplementasikan kedua konsep tersebut.
+- Authentication adalah proses untuk memverifikasi identitas pengguna dengan memeriksa credentials yang dimasukkan oleh pengguna pada saat login. Sistem akan melihat apakah pengguna terdaftar di dalam database. Authorization adalah tahap lanjut dari authentification, yaitu proses pemberian akses dan izin kepada mengguna untuk menggunakan fitur-fitur tertentu yang ada di aplikasi. 
+- Pada saat pengguna login, pengguna memasukkan username dan password lalu aplikasi akan memvalidasi apakah username dan password ada dalam database sebagai credential user yang valid. Jika valid, pengguna sudah terautentikasi sedangkan jika tidak valid pengguna akan diminta untuk memasukkan ulang. Setelah berhasil login, aplikasi akan menyimpan status login pengguna dalam sesi (menggunakan session management) sehingga pada permintaan berikutnya, aplikasi tahu bahwa pengguna tersebut sudah login.Cookie bisa disimpan di browser pengguna untuk mengingat login atau melacak waktu login terakhir.
+- Django mengimplementasikan authentication dengan mengecek apakah pengguna sudah login melalui sistem login, logout, dan session management. Untuk authorization, Django memastikan pengguna yang sudah login hanya bisa mengakses halaman atau fitur tertentu menggunakan izin (permissions) dan dekorator seperti @login_required. Dengan begitu, setelah pengguna berhasil login, Django memutuskan apa yang boleh dan tidak boleh mereka lakukan berdasarkan aturan izin yang ada.
+
+### IV. Bagaimana Django mengingat pengguna yang telah login? Jelaskan kegunaan lain dari cookies dan apakah semua cookies aman digunakan?
+- Django mengingat pengguna yang telah login dengan menggunakan session yang disimpan di server dan dihubungkan dengan cookies yang disimpan di browser pengguna. Saat pengguna login, Django akan membuat session ID yang unik dan menyimpannya di cookie pada browser miliki pengguna. Setiap pengguna mengakses halaman aplikasi, cookie akan dikirim ke server sehingga Django dapat mengenali pengguna tersebut tanpa melakukan login ulang.
+- Selain mengingat pengguna yang telah login, cookies juga berguna untuk penyimpanan preferensi pengguna seperti bahasa, theme dan tampilan aplikasi, dan berbagai pengaturan lainnya sehingga pengguna tidak perlu mengaturnya lagi setiap kali membuka suatu aplikasi. Cookies juga berguna untuk melacar aktivitas pengguna di situs web seperti halaman apa yang dikunjungi terlebih untuk keperluan analisis ataupun personalisasi iklan yang ditampilkan.
+- Tentunya tidak semua cookies aman untuk digunakan. Cookies dapat rentan terhadap serangan seperti Cross-Site Scripting (XSS) dan Cross-Site Request Forgery (CSRF) jika tidak dikonfigurasi dengan baik. Untuk meningkatkan keamanan, Django mendukung penggunaan secure cookies (hanya dikirim melalui HTTPS), HttpOnly cookies (tidak dapat diakses melalui JavaScript), dan CSRF protection untuk mencegah serangan berbahaya yang menargetkan sesi pengguna.
+
+### V. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step
+#### a. Mengimplementasikan fungsi registrasi, login, dan logout untuk memungkinkan pengguna untuk mengakses aplikasi sebelumnya dengan lancar.
+Untuk mengimplementasikan fungsi registrasi, saya membuat function register pada file views.py, fungsi ini akan menghasilkan formulir registrasi dan mengashilkan akun pengguna baru. Untuk memastikan fungsi ini bisa terlihat pada aplikasi, saya membuat file register.html yang berisi code yang akan mengasilkan form pada website. Lalu, saya membuat fungsi login dengan menambahkan function login_user pada views.py dan membuat file html baru bernama login html pada direktori main/templates. Setelah itu, saya membuat fungsi logout dengan menambahkan function logout pada views.py dan menambahkan button dan hyperlink pada main.html di direktori main/templates yang jika ditekan, akan mengarahkan user untuk keluar dari akunnya. Setelah membuat ketiga fungsi tersebut, saya melakukan routing dengan mengimport functions tersebut dan menambahkan path ke masing-masing function pada list urlpatterns yang terletak pada file urls.py pada aplikasi main. Agar halaman hanya bisa dibuka oleh pengguna yang sudah login, saya menambahkan dekorator @login_required(login_url='/login') di atas fungsi show_main pada views.py dengan tidak lupa untuk mengimport fungsi pendukungnya.
+
+#### b. Membuat dua akun pengguna dengan masing-masing tiga dummy data menggunakan model yang telah dibuat pada aplikasi sebelumnya untuk setiap akun di lokal.
+Saya menjalankan aplikasi dengan memanggil command 'python manage.py runserver' pada terminal dengan virtual environment yang sudah aktif. Lalu, saya membuka http://localhost:8000/ yang akan mengarahkan saya ke website saya yang dibuka secara lokal. Saya pun melakukan registrasi untuk 2 akun pengguna dan melakukan login dengan data yang saya registrasikan. Setelah login, saya menambahkan 3 dummy data untuk satu pengguna. Saya logout lalu login lagi dengan credentials pengguna satunya dan membuat 3 dummy data juga.
+
+#### c. Menghubungkan model Product dengan User.
+Untuk menghubungnkan model Product dengan User, pada models.py saya menambahkan import User dari django.contrib.auth.models dan menambahkan atribut user = models.ForeignKey(User, on_delete=models.CASCADE) pada class ProductEntry. Atribut ini menandakan bahwa setiap instance dari class ProductEntry terasosiasi dengan satu user. Pada file views.py, saya mengubah potongan kode pada function create_product_entry yaitu dengan menambahkan product_entry.user = request.user yang akan mengisi atribut product_entry.user dengan hasil return request.user yang akan mengembalikan user yang sedang login sehingga pada saat menambahkan product, user yang sedang login akan tersimpan di product tersebut. 
+
+#### d. Menampilkan detail informasi pengguna yang sedang logged in seperti username dan menerapkan cookies seperti last login pada halaman utama aplikasi.
+Untuk menampilkan informasi username yang sedang login, pada func show_main di file views.py, value dari 'name' pada dictionary context yang tadinya didefinisikan sebagai string statis, sekarang diubah menjadi request.user.username sehingga akan menampilkan username dari pengguna yang sedang login. Untuk menerapkan cookies last login pada halaman utama aplikasi, pada dictionary context juga ditambahkan keypair baru berupa 'last_login': request.COOKIES['last_login'] sehingga data last_login disimpan dan menambahkan <h5>Sesi terakhir login: {{ last_login }}</h5> pada main.html agar last_login bisa ditampilkan di halaman utama aplikasi.
