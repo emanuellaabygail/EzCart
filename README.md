@@ -121,3 +121,62 @@ Untuk menghubungnkan model Product dengan User, pada models.py saya menambahkan 
 
 #### d. Menampilkan detail informasi pengguna yang sedang logged in seperti username dan menerapkan cookies seperti last login pada halaman utama aplikasi.
 Untuk menampilkan informasi username yang sedang login, pada func show_main di file views.py, value dari 'name' pada dictionary context yang tadinya didefinisikan sebagai string statis, sekarang diubah menjadi request.user.username sehingga akan menampilkan username dari pengguna yang sedang login. Untuk menerapkan cookies last login pada halaman utama aplikasi, pada dictionary context juga ditambahkan keypair baru berupa 'last_login': request.COOKIES['last_login'] sehingga data last_login disimpan dan menambahkan <h5>Sesi terakhir login: {{ last_login }}</h5> pada main.html agar last_login bisa ditampilkan di halaman utama aplikasi.
+
+<br>
+<br>
+
+# Tugas 5
+## Pertanyaan:
+### I. Jika terdapat beberapa CSS selector untuk suatu elemen HTML, jelaskan urutan prioritas pengambilan CSS selector tersebut!
+Jika untuk suatu elemen HTML terdapat beberapa CSS selector, urutan prioritas pengambilan CSS selector tersebut dari yang tertinggi hingga yang terendah adalah sebagai berikut:
+- !important: jika terdapat CSS selector ini, CSS selector lain akan diabaikan dan pasti CSS selector ini yang didahulukan.
+- Inline styles: jika style langsung ditulis di atribut style pada elemen HTML, selector ini lah yang akan dijalankan. contoh: '<p style="color: red;">Teks berwarna merah</p>'
+- ID selector: selector ini ditulis dengan menggunakan tanda pagar diikuti oleh id elemen HTML yang ingin dipilih. Contoh:
+pada css:
+'#judul {
+  color: blue;
+}'
+pada html:
+'<h1 id="judul">judul ini biru</h1>'
+- Class, Pseudo-class, dan Attribute Selector: selector class ditandai dengan tanda titik (.), pseudo-class ditandai dengan titik dua (:), dan attribute ditandai dengan tanda kurung siku berisi atributnya ([atribut=""]). Contoh:
+pada css:
+'.teks-hijau {
+  color: green;
+}
+p:hover {
+  color: orange;
+}'
+pada html:
+'<p class="teks-hijau">teks hijau jadi orange kalau hover</p>'
+- Tag/element selector: Selector tag memiliki prioritas yang paling rendah. Selector ini mempengaruhi semua elemen dengan tag yang ditentukan (kecuali yang sudah diatur oleh selector lain). Contoh:
+pada css:
+'p{
+    color: yellow;
+}'
+pada html:
+'<p>p kuning</p>'
+
+### II. Mengapa responsive design menjadi konsep yang penting dalam pengembangan aplikasi web? Berikan contoh aplikasi yang sudah dan belum menerapkan responsive design!
+Responsive design menjadi konsep yang penting dalam pengembangan aplikasi web karena konsep ini memungkinkan website ataupun aplikasi yang dikembangkan dapat diakses melalui berbagai aplikasi tanpa mengganggu tampilan ataupun fungsionalitasnya. Responsive design memastikan bahwa pengguna bisa melihat tampilan yang optimal dari segi layout ataupun aksesibilitas tanpa harus membuat versi terpisah untuk setiap perangkat. Contoh aplikasi website yang menerapkan responsive design adalah [Canva](https://www.canva.com/) dan [YouTube](https://www.youtube.com/). Contoh aplikasi website yang belum menerapkan responsive design adalah [siasisten](https://siasisten.cs.ui.ac.id/) 
+
+### III. Jelaskan perbedaan antara margin, border, dan padding, serta cara untuk mengimplementasikan ketiga hal tersebut!
+Margin, border, dan padding adalah 3 elemen yang digunakan untuk mengatur jarak dan tata letak elemen-elemen HTML pada suatu web. 
+- Margin adalah ruang di luar elemen, yaitu ruang antara suatu elemen dengan elemen lain di sekitarnya; margin mengatur jarak antarelemen. Margin tidak dapat terlihat di web. Untuk pengimplementasiannya, kita dapat mengatur ketebalan per sisinya. 
+- Border adalah garis pembatas yang mengelilingi elemen dan berada di antara margin & padding. Border dapat terlihat secara visual dan mempengaruhi ukuran elemen. Untuk pengimplementasiannya, kita dapat mengatur lebar, jenis, dan warnanya.
+- Padding adalah ruang di dalam elemen, antara isi dari elemen dan border. Padding memberikan jarak antara isi dan border elemen. Padding tidak terlihat, tetapi mempengaruhi ukuran dari elemen. Untuk pengimplementasiannya, kita dapat mengatur ketebalan per sisinya.
+
+### IV. Jelaskan konsep flex box dan grid layout beserta kegunaannya!
+Flexbox dan Grid Layout adalah dua metode dalam CSS untuk mengatur tata letak elemen di halaman web. Flexbox cocok untuk menyusun elemen dalam satu dimensi, baik baris atau kolom, seperti menu navigasi atau daftar gambar. Sedangkan Grid Layout lebih cocok untuk tata letak yang lebih kompleks karena bisa mengatur elemen dalam dua dimensi (baris dan kolom), misalnya untuk layout halaman web dengan banyak bagian.
+
+Secara sederhana, Flexbox dipakai kalau dibutuhkan fleksibilitas dalam menyusun elemen secara horizontal atau vertikal, sedangkan Grid lebih cocok kalau dibutuhkan kontrol penuh dalam menempatkan elemen di tempat spesifik dalam tata letak yang lebih besar.
+
+### V. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)!
+#### a. Implementasikan fungsi untuk menghapus dan mengedit product.
+Untuk mengimplementasikan kedua fungsi tersebut, saya membuat 2 fungsi baru di views.py pada subdirektori main, yaitu fungsi edit_product dan delete_product. Saya mengimport kedua fungsi tersebut pada file urls.py pada direktori main lalu menambahkan path url pada list urlpatterns. Saya juga menambahkan tombol untuk masing-masing fungsi tersebut pada main.html saya.
+
+#### b. Kustomisasi desain pada template HTML yang telah dibuat pada tugas-tugas sebelumnya
+Pertama-tama saya membuat base.html pada direktori root yang akan diextend oleh semua pages di website saya.
+- Kustomisasi halaman login, register, dan tambah product: saya mengkustomisasi masing-masing halaman website saya dengan menggunakan tailwing agar lebih menarik. Pada semua halaman, saya meng-extend base.html dan meng-include navbar.html
+- Kustomisasi halaman daftar product menjadi lebih menarik dan responsive. Jika pada aplikasi belum ada product yang tersimpan, halaman daftar product akan menampilkan gambar dan pesan bahwa belum ada product yang terdaftar. Jika sudah ada product yang tersimpan, halaman daftar product akan menampilkan detail setiap product dengan menggunakan card.: Saya menggunakan conditional pada main.html sehingga dapat memenuhi kriteria tersebut. Saya menambahkan sebuah gambar kucing yang akan ditampilkan jika belum ada product yang dimasukkan. Untuk kondisi di mana sudah ada product yang dimasukkan, saya melakukan loop terhadap list product_entries sehingga untuk masing-masing product_entry pada product_entries, terdapat card yang menampilkan informasi product tersebut. Saya juga membuat card_product.html yang menjadi tampilan card tersebut.
+- Untuk setiap card product, buatlah dua buah button untuk mengedit dan menghapus product pada card tersebut!: saya menambahkan 2 button, yaitu 1 untuk mengedit dan 1 untuk menghapus product saya. Button ini mengandung hyperlink yang jika ditekan akan mengarahkan pengguna ke halaman edit dan delete product.
+- Buatlah navigation bar (navbar) untuk fitur-fitur pada aplikasi yang responsive terhadap perbedaan ukuran device, khususnya mobile dan desktop.: Saya membuat navbar dengan menggunakan tailwind, lalu meng-include navbar saya pada semua halaman website saya.

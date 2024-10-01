@@ -1,37 +1,53 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+<title>EzCart - Product Management</title>
+{% endblock meta %}
+
 {% block content %}
-<h1>{{ project_name }}</h1>
-<h2>{{ name }} - {{ class }} - {{ npm }}</h2>
+{% include 'navbar.html' %}
+<div class="overflow-x-hidden px-6 md:px-10 pb-10 pt-24 min-h-screen bg-gray-50 flex flex-col">
 
-{% if not product_entries %}
-<p>Belum ada data product pada EzCart.</p>
-{% else %}
-<table>
-  <tr>
-    <th>Product Name</th>
-    <th>Price</th>
-    <th>Description</th>
-  </tr>
+  <!-- Info Cards Section -->
+  <div class="p-6 mb-10 relative bg-white shadow-lg rounded-lg">
+    <div class="relative grid grid-cols-1 z-30 md:grid-cols-3 gap-6">
+      {% include "card_info.html" with title='NPM' value=npm %}
+      {% include "card_info.html" with title='Name' value=name %}
+      {% include "card_info.html" with title='Class' value=class %}
+    </div>
+    <!-- Animated Gradient Border -->
+    <div class="absolute inset-0 rounded-lg bg-gradient-to-r from-indigo-500 to-purple-500 opacity-25 blur-lg"></div>
+  </div>
 
-  {% comment %} Berikut cara memperlihatkan data product di bawah baris ini 
-  {% endcomment %} 
-  {% for product_entry in product_entries %}
-  <tr>
-    <td>{{product_entry.name}}</td>
-    <td>{{product_entry.price}}</td>
-    <td>{{product_entry.description}}</td>
-  </tr>
-  {% endfor %}
-</table>
-{% endif %}
+  <!-- Last Login Info with Improved Styling -->
+  <div class="mb-6">
+    <div class="flex justify-center items-center bg-gradient-to-r from-purple-600 to-indigo-600 py-3 px-6 rounded-lg shadow-md">
+      <h1 class="text-white text-center font-semibold">Last Login: {{ last_login }}</h1>
+    </div>
+  </div>
 
-<br />
+  <!-- Add New Product Button -->
+  <div class="flex justify-between items-center mb-8">
+    <h2 class="text-xl font-semibold text-gray-700">Your Products</h2>
+    <a href="{% url 'main:create_product_entry' %}" class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-indigo-600 hover:to-purple-600 text-white font-bold py-2 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+      Add New Product
+    </a>
+  </div>
 
-<a href="{% url 'main:create_product_entry' %}">
-  <button>Add New product Entry</button>
-</a>
-<a href="{% url 'main:logout' %}">
-  <button>Logout</button>
-</a>
-<h5>Sesi terakhir login: {{ last_login }}</h5>
+  <!-- Product Entries Section -->
+  {% if not product_entries %}
+    <div class="flex flex-col items-center justify-center min-h-[24rem] p-6 bg-white rounded-lg shadow-md">
+      <img src="{% static 'image/sedih-banget.png' %}" alt="Sad face" class="w-32 h-32 mb-4"/>
+      <p class="text-center text-gray-600">Belum ada product yang ditambahkan.</p>
+    </div>
+  {% else %}
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      {% for product_entry in product_entries %}
+        {% include 'card_product.html' with product_entry=product_entry %}
+      {% endfor %}
+    </div>
+  {% endif %}
+
+</div>
 {% endblock content %}
