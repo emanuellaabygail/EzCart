@@ -200,7 +200,7 @@ Penggunaan decorator @csrf_exempt pada view yang digunakan untuk AJAX POST penti
 ### IV. Pada tutorial PBP minggu ini, pembersihan data input pengguna dilakukan di belakang (backend) juga. Mengapa hal tersebut tidak dilakukan di frontend saja?
 Pembersihan data input pengguna dilakukan di backend untuk alasan keamanan, karena pengguna dapat mengubah script di frontend sehingga validasi di sisi klien tidak dapat diandalkan. Dengan melakukan pembersihan data di backend, kita memastikan bahwa semua data yang diterima aman sebelum diproses. Selain itu, pembersihan di backend menjaga konsistensi data dari berbagai sumber dan mencegah masalah kedepannya, seperti kesalahan saat menyimpan data.
 
-### Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)!
+### V. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)!
 #### a. AJAX GET
 **Ubahlah kode cards data product agar dapat mendukung AJAX GET:** Untuk melakukan hal ini, saya menghapus block kondisional yang menampilkan card_product yang kosong ataupun tidak. Sebagai penggantinya, saya menambahkan fungsi asynchronous getProductEntries() dan refreshProductEntries() pada bagian script dan memanggil fungsi tersebut. 
 
