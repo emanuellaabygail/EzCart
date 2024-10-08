@@ -203,10 +203,15 @@ Pembersihan data input pengguna dilakukan di backend untuk alasan keamanan, kare
 ### Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)!
 #### a. AJAX GET
 **Ubahlah kode cards data product agar dapat mendukung AJAX GET:** Untuk melakukan hal ini, saya menghapus block kondisional yang menampilkan card_product yang kosong ataupun tidak. Sebagai penggantinya, saya menambahkan fungsi asynchronous getProductEntries() dan refreshProductEntries() pada bagian script dan memanggil fungsi tersebut. 
+
 **Lakukan pengambilan data mood menggunakan AJAX GET. Pastikan bahwa data yang diambil hanyalah data milik pengguna yang logged-in:** Untuk melakukan hal ini, saya mengubah baris pertama pada fungsi show_json dan show_xml sehingga menjadi `data = MoodEntry.objects.filter(user=request.user)`. Fungsi `show_json` akan dipanggil pada fungsi asynchronous getMoodEntries() sehingga dapat dipastikan bahwa data yang diambil hanyalah data milik pengguna yang sedang log in
 #### b. AJAX POST
 **Buatlah sebuah tombol yang membuka sebuah modal dengan form untuk menambahkan mood:** Untuk melakukan hal ini, saya menambahkan bagian code yang akan menampilkan form untuk menambah product baru. Saya juga menambahkan tombol untuk menambahkan product pada main yang jika ditekan akan mengarah ke form pembuatan product baru. Jika sudah selesai memasukkan data product baru, pengguna dapat memilih untuk menyimpan ataupun meng-cancel penambahan product baru. Pada bagian script, saya menambahkan bagian untuk mengatur modal tersebut. 
+
 **Buatlah fungsi view baru untuk menambahkan mood baru ke dalam basis data:** Untuk melakukan hal ini, saya menambahkan fungsi `add_product_entry_ajax` yang akan menambahkan sebuah product baru berdasarkan data yang dimasukkan saat pemanggilan modal.
+
 **Buatlah path /create-ajax/ yang mengarah ke fungsi view yang baru kamu buat:** Di berkas urls.py, saya meng-import fungsi `add_product_entry_ajax` dari views.py. Lalu, pada list path yang ada pada urls.py, saya menambahkan path yang mengarahkan ke fungsi tersebut.
+
 **Hubungkan form yang telah kamu buat di dalam modal kamu ke path /create-ajax/:** Pada bagian script main.html saya membuat fungsi addProductEntry() yang terhubung dengan path itu.
+
 **Lakukan refresh pada halaman utama secara asinkronus untuk menampilkan daftar mood terbaru tanpa reload halaman utama secara keseluruhan:** Saya membuat fungsi asynchronous refreshProductEntries() pada bagian script sehingga web akan refresh main page tanpa perlu dilakukan reload.
