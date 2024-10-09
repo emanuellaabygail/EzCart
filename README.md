@@ -1,6 +1,6 @@
 # EzCart
 ## Tautan deploy: 
-emanuella-abygail-ezcart.pbp.cs.ui.ac.id
+[See my website here!](http://emanuella-abygail-ezcart.pbp.cs.ui.ac.id)
 
 # Tugas 2
 ## Pertanyaan:
